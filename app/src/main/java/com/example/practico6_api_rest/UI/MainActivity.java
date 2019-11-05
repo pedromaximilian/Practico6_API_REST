@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner spinnerProvincias;
+    EditText edBuscar;
     ListView listViewMunicipios;
     MainViewModel mainViewModel;
     List<Municipios> listaMunicipios;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void configView() {
 
-        spinnerProvincias = findViewById(R.id.spinnerProvincias);
+        edBuscar = findViewById(R.id.editText_Provincia);
         listViewMunicipios = findViewById(R.id.listviewPrincipal);
         btnBuscar = findViewById(R.id.btnBuscar);
 
