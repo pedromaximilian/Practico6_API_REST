@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listaMunicipios = new ArrayList<>();
+
 
         configView();
     }
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         edBuscar = findViewById(R.id.editText_Provincia);
         listViewMunicipios = findViewById(R.id.listviewPrincipal);
         btnBuscar = findViewById(R.id.btnBuscar);
-
+        listaMunicipios = new ArrayList<>();
 
 
         Municipios mun1 = new Municipios("1", "San Luis");
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         listViewMunicipios.setAdapter(adaptadorMunicipios);
 
-
+/*
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         mainViewModel.getResultadoMunicipios().observe(this, new Observer<ResultadoMunicipios>() {
             @Override
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+*/
 
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                mainViewModel.buscarMunicipios("San Luis");
+                //mainViewModel.buscarMunicipios("San Luis");
             }
         });
 
