@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.practico6_api_rest.Model.AdaptadorMunicipios;
 import com.example.practico6_api_rest.Model.Municipios;
+import com.example.practico6_api_rest.Model.OtroAdapter;
 import com.example.practico6_api_rest.Model.ResultadoMunicipios;
 import com.example.practico6_api_rest.R;
 
@@ -44,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
         listViewMunicipios = findViewById(R.id.listviewPrincipal);
         btnBuscar = findViewById(R.id.btnBuscar);
         listaMunicipios = new ArrayList<>();
+         final ArrayAdapter<Municipios> adapter = new OtroAdapter(this, R.layout.itemlistview, listaMunicipios, getLayoutInflater());
 
-
+/*
         Municipios mun1 = new Municipios("1", "San Luis");
         Municipios mun2 = new Municipios("2", "San Luis");
 
@@ -53,25 +56,39 @@ public class MainActivity extends AppCompatActivity {
         listaMunicipios.add(mun2);
 
 
-        AdaptadorMunicipios adaptadorMunicipios = new AdaptadorMunicipios(getApplicationContext(), listaMunicipios);
+*/
 
-        listViewMunicipios.setAdapter(adaptadorMunicipios);
+        listViewMunicipios.setAdapter(adapter);
 
-/*
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         mainViewModel.getResultadoMunicipios().observe(this, new Observer<ResultadoMunicipios>() {
             @Override
             public void onChanged(ResultadoMunicipios resultadoMunicipios) {
-                //listaMunicipios.clear();
-                //listaMunicipios = resultadoMunicipios.getMunicipios();
-                Toast.makeText(MainActivity.this, listaMunicipios.get(1).toString(), Toast.LENGTH_SHORT).show();
-                //AdaptadorMunicipios adaptadorMunicipios = new AdaptadorMunicipios(getApplicationContext(), listaMunicipios);
+
+                adapter.clear();
+                listaMunicipios = resultadoMunicipios.getMunicipios();
+                //Toast.makeText(MainActivity.this, listaMunicipios.get(1).toString(), Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+                adapter.addAll(listaMunicipios);
+
+                listViewMunicipios.setAdapter(adapter);
+
+
+
+                adapter.notifyDataSetChanged();
+
                 //listViewMunicipios.setAdapter(adaptadorMunicipios);
             }
         });
 
 
-*/
+
 
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                //mainViewModel.buscarMunicipios("San Luis");
+
+                mainViewModel.buscarMunicipios(edBuscar.getText().toString());
             }
         });
 

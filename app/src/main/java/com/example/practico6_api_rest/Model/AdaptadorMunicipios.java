@@ -48,7 +48,7 @@ public class AdaptadorMunicipios extends BaseAdapter {
 
 
         nombre.setText(municipio.getNombre());
-        id.setText(municipio.getId()+"");
+        id.setText(municipio.getId());
 
 
         return view;

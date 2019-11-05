@@ -20,10 +20,20 @@ public class OtroAdapter extends ArrayAdapter<Municipios> {
     private List<Municipios> listaMunicipios;
     private LayoutInflater li;
 
+
+
+
     public OtroAdapter(@NonNull Context context, int resource, @NonNull Municipios[] objects, Context context1, List<Municipios> listaMunicipios, LayoutInflater li) {
         super(context, resource, objects);
         this.context = context1;
         this.listaMunicipios = listaMunicipios;
+        this.li = li;
+    }
+
+    public OtroAdapter(@NonNull Context context, int resource, List<Municipios> objects, LayoutInflater li) {
+        super(context, resource, objects);
+        this.context= context;
+        this.listaMunicipios = objects;
         this.li = li;
     }
 

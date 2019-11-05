@@ -30,13 +30,14 @@ public class MainViewModel extends AndroidViewModel {
     public MainViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
+
     }
 
 
 
     public void buscarMunicipios(String provincias){
 
-        final Call<ResultadoMunicipios> datos = ApiMunicipios.getMyApiClient().leer();
+        final Call<ResultadoMunicipios> datos = ApiMunicipios.getMyApiClient().leer(provincias);
         
         datos.enqueue(new Callback<ResultadoMunicipios>() {
             @Override
@@ -50,7 +51,19 @@ public class MainViewModel extends AndroidViewModel {
             }
             @Override
             public void onFailure(Call<ResultadoMunicipios> call, Throwable t) {
-                Toast.makeText(context, "Hubo un error al buscar", Toast.LENGTH_SHORT).show();
+
+                t.getMessage();
+
+
+                Toast.makeText(context, "No existen respuestas a este codigo de ciudad", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, datos.request().url().toString(), Toast.LENGTH_LONG).show();
+
+
+
+
+
+
+
             }
         });
 

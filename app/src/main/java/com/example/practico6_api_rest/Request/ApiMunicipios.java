@@ -29,9 +29,9 @@ public class ApiMunicipios {
 
 
     public interface MyApiInterface {
-        String prov="74";
-        @GET("municipios?provincia="+prov)
-        Call<ResultadoMunicipios> leer();
+
+        @GET("municipios")
+        Call<ResultadoMunicipios> leer(@Query("provincia") String valor);
         }
 
 }
