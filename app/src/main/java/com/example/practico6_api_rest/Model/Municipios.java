@@ -7,7 +7,9 @@ public class Municipios {
 
     private String nombre;
 
-    public Municipios(int i, String s) {
+    public Municipios(String id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
     }
 
     public String getId() {

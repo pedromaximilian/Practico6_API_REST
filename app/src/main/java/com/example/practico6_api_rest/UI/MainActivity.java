@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        listaMunicipios = new ArrayList<>();
 
         configView();
     }
@@ -42,7 +42,18 @@ public class MainActivity extends AppCompatActivity {
         spinnerProvincias = findViewById(R.id.spinnerProvincias);
         listViewMunicipios = findViewById(R.id.listviewPrincipal);
         btnBuscar = findViewById(R.id.btnBuscar);
-        listaMunicipios = new ArrayList<>();
+
+
+
+        Municipios mun1 = new Municipios("1", "San Luis");
+        Municipios mun2 = new Municipios("2", "San Luis");
+
+        listaMunicipios.add(mun1);
+        listaMunicipios.add(mun2);
+
+
+        AdaptadorMunicipios adaptadorMunicipios = new AdaptadorMunicipios(getApplicationContext(), listaMunicipios);
+
 
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
@@ -50,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(ResultadoMunicipios resultadoMunicipios) {
                 //listaMunicipios.clear();
-                listaMunicipios = resultadoMunicipios.getMunicipios();
+                //listaMunicipios = resultadoMunicipios.getMunicipios();
                 Toast.makeText(MainActivity.this, listaMunicipios.get(1).toString(), Toast.LENGTH_SHORT).show();
                 //AdaptadorMunicipios adaptadorMunicipios = new AdaptadorMunicipios(getApplicationContext(), listaMunicipios);
                 //listViewMunicipios.setAdapter(adaptadorMunicipios);
