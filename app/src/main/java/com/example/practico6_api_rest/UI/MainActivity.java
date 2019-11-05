@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         AdaptadorMunicipios adaptadorMunicipios = new AdaptadorMunicipios(getApplicationContext(), listaMunicipios);
 
+        listViewMunicipios.setAdapter(adaptadorMunicipios);
 
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
